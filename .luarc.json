@@ -1,0 +1,13 @@
+{
+  "diagnostics.globals": [
+    "vim",
+    "NormalFloat",
+    "CursorLine",
+    "DiagnosticUnnecessary",
+    "DiagnosticVirtualTextError",
+    "DiagnosticVirtualTextWarn",
+    "DiagnosticVirtualTextHint",
+    "DiagnosticVirtualTextInfo"
+  ],
+  "runtime.version": "LuaJIT",
+}
