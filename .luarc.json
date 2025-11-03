@@ -7,7 +7,12 @@
     "DiagnosticVirtualTextError",
     "DiagnosticVirtualTextWarn",
     "DiagnosticVirtualTextHint",
-    "DiagnosticVirtualTextInfo"
+    "DiagnosticVirtualTextInfo",
+    "Cursor",
+    "Snacks",
+    "GitSignsAdd",
+    "GitSignsChange",
+    "GitSignsDelete",
   ],
   "runtime.version": "LuaJIT",
 }

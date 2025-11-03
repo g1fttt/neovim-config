@@ -22,6 +22,7 @@ return {
     opts = {
       callback = function(ev)
         require("lsp").on_lsp_attach(ev)
+        require("mappings").on_lsp_attach()
       end,
     }
   },

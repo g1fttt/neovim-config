@@ -8,10 +8,6 @@ return {
     config = require("colorschemes.seoulbones").colorscheme_config,
   },
   {
-    "nvim-tree/nvim-web-devicons",
-    config = true,
-  },
-  {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "2.15.0",
@@ -115,7 +111,7 @@ return {
     version = "3.17.0",
     opts = {
       preset = "modern",
-      spec = require("mappings"),
+      spec = require("mappings").spec,
       delay = 300,
       icons = {
         group = "",
@@ -147,8 +143,27 @@ return {
     },
   },
   {
-    "kdheepak/lazygit.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = { "LazyGit", "LazyGitConfig" },
+    "lewis6991/gitsigns.nvim",
+    version = "1.0.2",
+    config = true,
+  },
+  {
+    "catgoose/nvim-colorizer.lua",
+    version = "*",
+    opts = {
+      lazy_load = true,
+      user_default_options = {
+        names = false,
+        css = true,
+        tailwind = true,
+      },
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    version = "2.28.0",
+    opts = {
+      lazygit = { enabled = true },
+    },
   },
 }
