@@ -25,8 +25,6 @@ end
 local function handle_lazy_plugin_manager(plugins_specs)
   local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-  -- FIXME:
-  ---@diagnostic disable-next-line: undefined-field
   if not vim.uv.fs_stat(lazy_path) then
     local lazy_repo = "https://github.com/folke/lazy.nvim.git"
     local out = vim.fn.system({
@@ -47,7 +45,7 @@ local function handle_lazy_plugin_manager(plugins_specs)
 
   require("lazy").setup({
     spec = specs,
-    install = { colorscheme = { vim.g.colors_name } }, -- TODO: Test me
+    install = { colorscheme = { vim.g.colors_name } },
     ui = { border = vim.o.winborder },
   })
 end

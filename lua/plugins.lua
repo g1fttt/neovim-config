@@ -87,7 +87,6 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    version = "*",
     config = function()
       local fzf = require("fzf-lua")
 
@@ -108,7 +107,6 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    version = "3.17.0",
     opts = {
       preset = "modern",
       spec = require("mappings").spec,

@@ -33,9 +33,7 @@ M.spec = {
   { "<leader>tl", "<CMD>LiveServerToggle<CR>", desc = "Toggle live server" },
   {
     "<leader>lg",
-    function()
-      Snacks.lazygit.open()
-    end,
+    function() Snacks.lazygit.open() end,
     desc = "Open LazyGit",
   },
 
@@ -46,6 +44,11 @@ M.spec = {
       color = "blue",
     },
     { "<leader>f", "<CMD>FzfLua files<CR>", desc = "Open file picker" },
+    {
+      "<leader>s",
+      function() return FzfLua.global() end,
+      desc = "Open global search"
+    },
     {
       "<C-p>",
       function()
