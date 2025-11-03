@@ -32,6 +32,13 @@ local servers_settings = {
       filetypes = { "html", "htm" },
     },
   },
+  {
+    name = "vscode-css-language-server",
+    opts = {
+      cmd = { "vscode-css-language-server", "--stdio" },
+      filetypes = { "css" },
+    },
+  },
 }
 
 local M = {

@@ -9,6 +9,8 @@ return {
       html = { "superhtml" },
       htm = { "superhtml" },
 
+      css = { "prettier" },
+
       javascript = { "prettier" },
       typescript = { "prettier" },
     },
