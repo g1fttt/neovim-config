@@ -4,6 +4,8 @@ return {
   version = "9.1.0",
   opts = {
     formatters_by_ft = {
+      lua = { lsp_format = "fallback" },
+
       rust = { "rustfmt" },
 
       html = { "superhtml" },
@@ -13,12 +15,13 @@ return {
 
       javascript = { "prettier" },
       typescript = { "prettier" },
+
+      go = { "gofmt" },
     },
     formatters = {
       prettier = {
         append_args = { "--no-semi" },
       },
     },
-    default_format_opts = { lsp_format = "fallback" },
   },
 }
