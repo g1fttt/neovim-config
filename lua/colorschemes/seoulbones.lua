@@ -12,18 +12,16 @@ function M.colorscheme_config()
   local spec = lush.extends({ colorscheme }).with(function()
     return {
       CursorLine { bg = colorscheme.CursorLine.bg.da(50) },
+      ColorColumn { bg = colorscheme.Statement.fg.da(50) },
       Cursor { bg = nil },
       NormalFloat { bg = nil },
+      Pmenu { bg = nil },
 
       DiagnosticUnnecessary { fg = nil },
       DiagnosticVirtualTextError { fg = colorscheme.DiagnosticError.fg, bg = nil },
       DiagnosticVirtualTextWarn { fg = colorscheme.DiagnosticWarn.fg, bg = nil },
       DiagnosticVirtualTextHint { fg = colorscheme.DiagnosticHint.fg, bg = nil },
       DiagnosticVirtualTextInfo { fg = colorscheme.DiagnosticInfo.fg, bg = nil },
-
-      GitSignsAdd { fg = colorscheme.GitSignsAdd.fg.saturate(100).da(15) },
-      GitSignsChange { fg = colorscheme.GitSignsChange.fg.saturate(100).da(25) },
-      GitSignsDelete { fg = colorscheme.GitSignsDelete.fg.saturate(100).da(15) },
     }
   end)
 
@@ -55,6 +53,7 @@ function M.hlchunk_config(opts)
 
   opts.line_num.style = { { fg = special_color.fg } }
   opts.indent.style = { { fg = "#505050" } }
+
   opts.chunk.style = { { fg = special_color.fg } }
 end
 

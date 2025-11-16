@@ -23,11 +23,25 @@ function M.on_lsp_attach()
   })
 end
 
-M.spec = {
-  { "<leader>",   "<Nop>",                     silent = true },
+function M.blink_cmp()
+  return {
+    preset = "enter",
 
-  { "<leader>/",  ":normal gcc<CR>",           desc = "Comment line" },
-  { "<leader>/",  "<ESC>:normal gvgc<CR>",     mode = "v",                                 desc = "Comment block" },
+    ["<Esc>"] = { "cancel", "fallback" },
+  }
+end
+
+M.spec = {
+  { "<leader>",  "<Nop>",           silent = true },
+
+  { "<leader>/", ":normal gcc<CR>", desc = "Comment line" },
+  {
+    "<leader>/",
+    "<Esc>:normal gvgc<CR>",
+    mode = "v",
+    desc = "Comment block"
+  },
+  { "<Esc>",      "<CMD>nohlsearch<CR>",       silent = true },
 
   { "<leader>o",  "<CMD>Oil<CR>",              desc = "Open current directory as a buffer" },
   { "<leader>tl", "<CMD>LiveServerToggle<CR>", desc = "Toggle live server" },
@@ -43,12 +57,8 @@ M.spec = {
       icon = "󰍉",
       color = "blue",
     },
-    { "<leader>f", "<CMD>FzfLua files<CR>", desc = "Open file picker" },
-    {
-      "<leader>s",
-      function() return FzfLua.global() end,
-      desc = "Open global search"
-    },
+    { "<leader>f", "<CMD>FzfLua files<CR>",  desc = "Open file picker" },
+    { "<leader>s", "<CMD>FzfLua global<CR>", desc = "Open global search" },
     {
       "<C-p>",
       function()

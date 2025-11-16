@@ -11,7 +11,7 @@ return {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "2.15.0",
-    lazy = false,
+    cmd = { "Oil" },
     opts = {
       columns = { "icon", "size" },
       buf_options = { bufhidden = "wipe" },
@@ -41,7 +41,6 @@ return {
   {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    version = "*",
     config = function()
       local opts = {
         line_num = { enable = true },
@@ -60,10 +59,12 @@ return {
     end
   },
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    version = "0.11.0",
-    config = true,
+    "saghen/blink.pairs",
+    dependencies = { "saghen/blink.download" },
+    version = "*",
+    opts = {
+      highlights = { enabled = false },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -118,11 +119,18 @@ return {
     },
   },
   {
-    "nvim-mini/mini.completion",
+    "saghen/blink.cmp",
     event = "LspAttach",
-    version = "*",
+    version = "1.7.0",
     opts = {
-      lsp_completion = { auto_setup = false },
+      keymap = require("mappings").blink_cmp(),
+      completion = {
+        documentation = { auto_show = true },
+        trigger = {
+          show_on_insert_on_trigger_character = false,
+        },
+      },
+      signature = { enabled = true },
     },
   },
   {
@@ -141,11 +149,6 @@ return {
     },
   },
   {
-    "lewis6991/gitsigns.nvim",
-    version = "1.0.2",
-    config = true,
-  },
-  {
     "catgoose/nvim-colorizer.lua",
     version = "*",
     opts = {
@@ -162,6 +165,23 @@ return {
     version = "2.28.0",
     opts = {
       lazygit = { enabled = true },
+    },
+  },
+  {
+    "Bekaboo/deadcolumn.nvim",
+    version = "1.0.2",
+    opts = {
+      scope = function()
+        if vim.fn.mode():find("^[iRss\x13]") ~= nil then
+          return vim.fn.strdisplaywidth(vim.fn.getline("."))
+        end
+
+        return 0
+      end,
+      blending = {
+        colorcode = require("utils").hl_group_color("CursorLine").bg,
+      },
+      warning = { alpha = 0.2 },
     },
   },
 }

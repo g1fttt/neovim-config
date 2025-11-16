@@ -10,9 +10,8 @@
     "DiagnosticVirtualTextInfo",
     "Cursor",
     "Snacks",
-    "GitSignsAdd",
-    "GitSignsChange",
-    "GitSignsDelete",
+    "Pmenu",
+    "ColorColumn",
   ],
   "runtime.version": "LuaJIT",
 }

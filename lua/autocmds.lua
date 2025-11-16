@@ -20,8 +20,7 @@ return {
   {
     event = "LspAttach",
     opts = {
-      callback = function(ev)
-        require("lsp").on_lsp_attach(ev)
+      callback = function()
         require("mappings").on_lsp_attach()
       end,
     }

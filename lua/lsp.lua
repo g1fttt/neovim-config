@@ -39,6 +39,13 @@ local servers_settings = {
       filetypes = { "css" },
     },
   },
+  {
+    name = "gopls",
+    opts = {
+      cmd = { "gopls", "serve" },
+      filetypes = { "go" },
+    },
+  }
 }
 
 local M = {
@@ -49,25 +56,6 @@ local M = {
     info = "",
   },
 }
-
-function M.on_lsp_attach(ev)
-  local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-  if client and client:supports_method("textDocument/completion") then
-    local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
-
-    if buf_ft == "oil" then
-      return
-    end
-
-    vim.lsp.completion.enable(true, client.id, ev.buf, {
-      autotrigger = true,
-      convert = function()
-        return { menu = "", kind = nil }
-      end
-    })
-  end
-end
 
 function M.init()
   local diagnostic_config = {
