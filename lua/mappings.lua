@@ -1,11 +1,7 @@
-local function which_key()
-  return require("which-key")
-end
-
 local M = {}
 
 function M.on_lsp_attach()
-  which_key().add({
+  require("which-key").add({
     {
       group = "LSP",
       icon = {
@@ -55,6 +51,7 @@ M.spec = {
     end,
     desc = "Toggle live server"
   },
+  { "<leader>tm", "<CMD>RenderMarkdown toggle<CR>", desc = "Toggle markdown render" },
   {
     "<leader>lg",
     function() Snacks.lazygit.open() end,
