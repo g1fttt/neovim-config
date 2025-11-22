@@ -41,10 +41,20 @@ M.spec = {
     mode = "v",
     desc = "Comment block"
   },
-  { "<Esc>",      "<CMD>nohlsearch<CR>",       silent = true },
+  { "<Esc>",     "<CMD>nohlsearch<CR>", silent = true },
 
-  { "<leader>o",  "<CMD>Oil<CR>",              desc = "Open current directory as a buffer" },
-  { "<leader>tl", "<CMD>LiveServerToggle<CR>", desc = "Toggle live server" },
+  { "<leader>o", "<CMD>Oil<CR>",        desc = "Open current directory as a buffer" },
+  {
+    "<leader>tl",
+    function()
+      local current_dir = vim.fn.expand("%:p:h")
+
+      vim.g.is_live_server_active = not vim.g.is_live_server_active
+
+      require("live-server").toggle(current_dir)
+    end,
+    desc = "Toggle live server"
+  },
   {
     "<leader>lg",
     function() Snacks.lazygit.open() end,
@@ -75,16 +85,18 @@ M.spec = {
       icon = "",
       color = "green",
     },
-    { "<leader>w",  "<CMD>BufferClose<CR>",  desc = "Close current buffer" },
-    { "<leader>g1", "<CMD>BufferGoto 1<CR>", desc = "Go to buffer 1" },
-    { "<leader>g2", "<CMD>BufferGoto 2<CR>", desc = "Go to buffer 2" },
-    { "<leader>g3", "<CMD>BufferGoto 3<CR>", desc = "Go to buffer 3" },
-    { "<leader>g4", "<CMD>BufferGoto 4<CR>", desc = "Go to buffer 4" },
-    { "<leader>g5", "<CMD>BufferGoto 5<CR>", desc = "Go to buffer 5" },
-    { "<leader>g6", "<CMD>BufferGoto 6<CR>", desc = "Go to buffer 6" },
-    { "<leader>g7", "<CMD>BufferGoto 7<CR>", desc = "Go to buffer 7" },
-    { "<leader>g8", "<CMD>BufferGoto 8<CR>", desc = "Go to buffer 8" },
-    { "<leader>g9", "<CMD>BufferGoto 9<CR>", desc = "Go to buffer 9" },
+    { "[b",         "<CMD>BufferPrevious<CR>", desc = "Go to next buffer" },
+    { "]b",         "<CMD>BufferNext<CR>",     desc = "Go to previous buffer" },
+    { "<leader>w",  "<CMD>BufferClose<CR>",    desc = "Close current buffer" },
+    { "<leader>g1", "<CMD>BufferGoto 1<CR>",   desc = "Go to buffer 1" },
+    { "<leader>g2", "<CMD>BufferGoto 2<CR>",   desc = "Go to buffer 2" },
+    { "<leader>g3", "<CMD>BufferGoto 3<CR>",   desc = "Go to buffer 3" },
+    { "<leader>g4", "<CMD>BufferGoto 4<CR>",   desc = "Go to buffer 4" },
+    { "<leader>g5", "<CMD>BufferGoto 5<CR>",   desc = "Go to buffer 5" },
+    { "<leader>g6", "<CMD>BufferGoto 6<CR>",   desc = "Go to buffer 6" },
+    { "<leader>g7", "<CMD>BufferGoto 7<CR>",   desc = "Go to buffer 7" },
+    { "<leader>g8", "<CMD>BufferGoto 8<CR>",   desc = "Go to buffer 8" },
+    { "<leader>g9", "<CMD>BufferGoto 9<CR>",   desc = "Go to buffer 9" },
   },
 }
 

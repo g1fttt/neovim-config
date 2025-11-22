@@ -23,7 +23,9 @@ local M = {
         "⠰⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⡟⠁⠀",
         "⠀⠙⠻⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⠟⠛⠁⠀⠀⠀",
       },
-      center = {{ desc = "" }},
+      center = {
+        { desc = "" },
+      },
       vertical_center = true,
     },
   },
@@ -36,8 +38,8 @@ function M.on_buf_delete_post(ev)
   local deleted_buf_bt = vim.api.nvim_get_option_value("buftype", { buf = ev.buf })
 
   local is_last_buf_closed = deleted_buf_name == ""
-    and deleted_buf_ft == ""
-    and deleted_buf_bt == ""
+      and deleted_buf_ft == ""
+      and deleted_buf_bt == ""
 
   if is_last_buf_closed then
     vim.cmd("Dashboard")

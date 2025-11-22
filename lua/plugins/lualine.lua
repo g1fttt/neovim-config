@@ -1,3 +1,7 @@
+local function live_server_status()
+  return vim.g.is_live_server_active and "󱜠 Online" or "󱜡 Offline"
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -19,6 +23,7 @@ return {
       },
       sections = {
         lualine_b = {
+          "encoding",
           {
             "diagnostics",
             sections = { "error", "warn" },
@@ -31,7 +36,7 @@ return {
             update_in_insert = true,
           }
         },
-        lualine_x = { "encoding", "filetype" },
+        lualine_x = { live_server_status, "filetype" },
       },
     })
   end

@@ -103,6 +103,9 @@ return {
     version = "*",
     build = "npm add -g live-server",
     cmd = { "LiveServerToggle" },
+    init = function()
+      vim.g.is_live_server_active = false
+    end,
     config = true,
   },
   {
