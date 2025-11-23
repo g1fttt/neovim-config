@@ -130,7 +130,7 @@ return {
       completion = {
         documentation = { auto_show = true },
         trigger = {
-          show_on_insert_on_trigger_character = false,
+          show_on_trigger_character = false,
         },
       },
       signature = { enabled = true },
@@ -190,9 +190,17 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ft = "markdown",
+    version = "8.10.0",
+    config = true,
     opts = {
+      code = {
+        language = false,
+        highlight_border = false,
+        disable_background = true,
+      },
       completions = {
-        lsp = { enable = true },
+        lsp = { enabled = true },
       },
     },
   },

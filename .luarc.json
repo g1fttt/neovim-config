@@ -11,7 +11,8 @@
     "Cursor",
     "Snacks",
     "Pmenu",
-    "ColorColumn"
+    "ColorColumn",
+    "RenderMarkdownCode"
   ],
   "runtime.version": "LuaJIT"
 }
