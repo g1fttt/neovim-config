@@ -1,4 +1,4 @@
-The configuration that lets me work, rather than procrastinate modifying it.
+The configuration that allows me to get things done, rather than procrastinating by modifying it.
 
 ## Introducrtion
 This <i>NeoVim</i> config was created as a result of being curious and in love with
