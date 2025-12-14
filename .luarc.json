@@ -12,7 +12,8 @@
     "Snacks",
     "Pmenu",
     "ColorColumn",
-    "RenderMarkdownCode"
+    "RenderMarkdownCode",
+    "SnippetTabStop"
   ],
   "runtime.version": "LuaJIT"
 }

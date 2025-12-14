@@ -19,17 +19,17 @@ local servers_settings = {
     },
   },
   {
-    name = "tsserver",
-    opts = {
-      cmd = { "typescript-language-server", "--stdio" },
-      filetypes = { "javascript", "typescript" },
-    },
-  },
-  {
     name = "superhtml",
     opts = {
       cmd = { "superhtml", "lsp" },
       filetypes = { "html", "htm" },
+    },
+  },
+  {
+    name = "gopls",
+    opts = {
+      cmd = { "gopls", "serve" },
+      filetypes = { "go" },
     },
   },
   {
@@ -39,13 +39,8 @@ local servers_settings = {
       filetypes = { "css" },
     },
   },
-  {
-    name = "gopls",
-    opts = {
-      cmd = { "gopls", "serve" },
-      filetypes = { "go" },
-    },
-  }
+  require("lsp.vtsls"),
+  require("lsp.vue_ls"),
 }
 
 local M = {

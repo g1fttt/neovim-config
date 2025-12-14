@@ -15,6 +15,7 @@ return {
 
       javascript = { "prettier" },
       typescript = { "prettier" },
+      vue = { "prettier" },
 
       go = { "gofmt" },
     },

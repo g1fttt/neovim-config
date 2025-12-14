@@ -80,7 +80,7 @@ return {
           "lua", "javascript",
           "typescript", "css",
           "html", "tsx",
-          "markdown",
+          "markdown", "vue",
         },
         highlight = { enable = true },
       })
@@ -129,11 +129,8 @@ return {
       keymap = require("mappings").blink_cmp(),
       completion = {
         documentation = { auto_show = true },
-        trigger = {
-          show_on_trigger_character = false,
-        },
+        ghost_text = { enabled = true },
       },
-      signature = { enabled = true },
     },
   },
   {
@@ -192,7 +189,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     ft = "markdown",
     version = "8.10.0",
-    config = true,
     opts = {
       code = {
         language = false,
@@ -203,5 +199,9 @@ return {
         lsp = { enabled = true },
       },
     },
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    opts = { enable_autocmd = false },
   },
 }

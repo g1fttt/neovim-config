@@ -50,6 +50,16 @@ local function handle_lazy_plugin_manager(plugins_specs)
   })
 end
 
+local function set_misc_options()
+  local get_option = vim.filetype.get_option
+
+  vim.filetype.get_option = function(filetype, option)
+    return option == "commentstring"
+        and require("ts_context_commentstring.internal").calculate_commentstring()
+        or get_option(filetype, option)
+  end
+end
+
 set_editor_options(require("options"))
 create_editor_autocmds(require("autocmds"))
 
@@ -62,3 +72,5 @@ handle_lazy_plugin_manager({
   "plugins.fidget",
   "plugins.conform",
 })
+
+set_misc_options()

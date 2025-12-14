@@ -16,6 +16,7 @@ function M.colorscheme_config()
       Cursor { bg = nil },
       NormalFloat { bg = nil },
       Pmenu { bg = nil },
+      SnippetTabStop { bg = nil },
 
       DiagnosticUnnecessary { fg = nil },
       DiagnosticVirtualTextError { fg = colorscheme.DiagnosticError.fg, bg = nil },
