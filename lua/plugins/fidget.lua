@@ -8,7 +8,8 @@ return {
         overrides = {
           rust_analyzer = { name = "rust-analyzer" },
           lua_ls = { name = "lua-ls" },
-          tsserver = { name = "typescript-ls" },
+          vue_ls = { name = "vue-ls" },
+          vtsls = { name = "vue-ts-ls" },
           superhtml = { name = "super-html" },
         },
       },

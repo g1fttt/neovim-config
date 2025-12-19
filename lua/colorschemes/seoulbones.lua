@@ -9,6 +9,7 @@ function M.colorscheme_config()
 
   local lush = require("lush")
 
+  ---@diagnostic disable: undefined-global
   local spec = lush.extends({ colorscheme }).with(function()
     return {
       CursorLine { bg = colorscheme.CursorLine.bg.da(50) },
@@ -25,6 +26,7 @@ function M.colorscheme_config()
       DiagnosticVirtualTextInfo { fg = colorscheme.DiagnosticInfo.fg, bg = nil },
     }
   end)
+  ---@diagnostic enable
 
   lush(spec)
 end

@@ -2,7 +2,6 @@ return {
   {
     "zenbones-theme/zenbones.nvim",
     dependencies = { "rktjmp/lush.nvim" },
-    version = "*",
     priority = 1000,
     lazy = false,
     config = require("colorschemes.seoulbones").colorscheme_config,
@@ -60,8 +59,7 @@ return {
   },
   {
     "saghen/blink.pairs",
-    dependencies = { "saghen/blink.download" },
-    version = "*",
+    build = "cargo build --release",
     opts = {
       highlights = { enabled = false },
     },
@@ -72,6 +70,7 @@ return {
     branch = "master",
     build = ":TSUpdate",
     config = function()
+      ---@diagnostic disable: missing-fields
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "rust", "c",
@@ -84,6 +83,7 @@ return {
         },
         highlight = { enable = true },
       })
+      ---@diagnostic enable
     end,
   },
   {
@@ -100,8 +100,7 @@ return {
   },
   {
     "barrett-ruth/live-server.nvim",
-    version = "*",
-    build = "npm add -g live-server",
+    build = "bun install -g live-server",
     cmd = { "LiveServerToggle" },
     init = function()
       vim.g.is_live_server_active = false
@@ -131,12 +130,20 @@ return {
         documentation = { auto_show = true },
         ghost_text = { enabled = true },
       },
+      sources = {
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
+      },
     },
   },
   {
     "NMAC427/guess-indent.nvim",
     event = "BufEnter",
-    version = "*",
     opts = {
       buftype_exclude = {
         "help",
@@ -150,7 +157,6 @@ return {
   },
   {
     "catgoose/nvim-colorizer.lua",
-    version = "*",
     opts = {
       lazy_load = true,
       user_default_options = {
@@ -203,5 +209,15 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     opts = { enable_autocmd = false },
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "snacks.nvim",        words = { "Snacks" } },
+      },
+    },
   },
 }
