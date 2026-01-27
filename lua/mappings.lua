@@ -10,7 +10,6 @@ function M.on_lsp_attach()
       },
       { "<leader>lD", "<CMD>FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics", },
       { "<leader>li", "<CMD>FzfLua lsp_implementations<CR>",   desc = "Implementations" },
-      { "<leader>lS", "<CMD>FzfLua lsp_workspace_symbols<CR>", desc = "Workspace symbols" },
       { "<leader>a",  "<CMD>FzfLua lsp_code_actions<CR>",      desc = "Code actions" },
       { "<leader>k",  vim.lsp.buf.hover,                       desc = "Documentation hover" },
       { "<leader>gd", vim.lsp.buf.definition,                  desc = "Go to definition" },
@@ -64,8 +63,8 @@ M.spec = {
       icon = "󰍉",
       color = "blue",
     },
-    { "<leader>f", "<CMD>FzfLua files<CR>",  desc = "Open file picker" },
-    { "<leader>s", "<CMD>FzfLua global<CR>", desc = "Open global search" },
+    { "<leader>f", "<CMD>FzfLua files<CR>",                      desc = "File picker" },
+    { "<leader>s", "<CMD>FzfLua lsp_live_workspace_symbols<CR>", desc = "Workspace symbols" },
     {
       "<C-p>",
       function()
