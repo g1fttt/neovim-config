@@ -16,6 +16,13 @@ local servers_settings = {
       cmd = { "lua-language-server" },
       filetypes = { "lua" },
       root_markers = { ".luarc.json" },
+      settings = {
+        Lua = {
+          runtime = {
+            pathStrict = false,
+          },
+        },
+      },
     },
   },
   {
