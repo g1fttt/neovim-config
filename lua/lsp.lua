@@ -29,7 +29,7 @@ local servers_settings = {
     name = "superhtml",
     opts = {
       cmd = { "superhtml", "lsp" },
-      filetypes = { "html", "htm" },
+      filetypes = { "html" },
     },
   },
   {
@@ -44,6 +44,20 @@ local servers_settings = {
     opts = {
       cmd = { "vscode-css-language-server", "--stdio" },
       filetypes = { "css" },
+    },
+  },
+  {
+    name = "pyright",
+    opts = {
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
+    },
+  },
+  {
+    name = "clangd",
+    opts = {
+      cmd = { "clangd", "--background-index", "--clang-tidy", "--experimental-modules-support" },
+      filetypes = { "c", "cpp", "cxx" },
     },
   },
   require("lsp.vtsls"),

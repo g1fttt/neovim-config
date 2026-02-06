@@ -13,6 +13,7 @@ return {
   o = {
     expandtab = true,
     shiftwidth = 2,
+    softtabstop = 2,
     tabstop = 2,
     winborder = "single",
   },
