@@ -24,6 +24,10 @@ function M.colorscheme_config()
       DiagnosticVirtualTextWarn { fg = colorscheme.DiagnosticWarn.fg, bg = nil },
       DiagnosticVirtualTextHint { fg = colorscheme.DiagnosticHint.fg, bg = nil },
       DiagnosticVirtualTextInfo { fg = colorscheme.DiagnosticInfo.fg, bg = nil },
+
+      DiffAdd { bg = colorscheme.DiffAdd.bg.da(50) },
+      DiffDelete { bg = colorscheme.DiffDelete.bg.da(50) },
+      DiffChange { bg = colorscheme.DiffChange.bg.da(50) },
     }
   end)
   ---@diagnostic enable

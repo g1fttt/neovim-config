@@ -36,9 +36,10 @@ M.spec = {
     mode = "v",
     desc = "Comment block"
   },
-  { "<Esc>",     "<CMD>nohlsearch<CR>", silent = true },
+  { "<Esc>",     "<CMD>nohlsearch<CR>",                   silent = true },
 
-  { "<leader>o", "<CMD>Oil<CR>",        desc = "Open current directory as a buffer" },
+  { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
+  { "<leader>o", "<CMD>Oil<CR>",                          desc = "Open current directory as a buffer" },
   {
     "<leader>tl",
     function()

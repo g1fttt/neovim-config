@@ -129,6 +129,7 @@ return {
         ghost_text = { enabled = true },
       },
       sources = {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
           lazydev = {
             name = "LazyDev",
@@ -217,5 +218,11 @@ return {
         { path = "snacks.nvim",        words = { "Snacks" } },
       },
     },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufEnter",
+    version = "2.0.0",
+    opts = {},
   },
 }
