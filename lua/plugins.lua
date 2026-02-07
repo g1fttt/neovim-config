@@ -38,6 +38,11 @@ return {
     },
   },
   {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+  {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -56,13 +61,6 @@ return {
 
       require("hlchunk").setup(opts)
     end
-  },
-  {
-    "saghen/blink.pairs",
-    build = "cargo build --release",
-    opts = {
-      highlights = { enabled = false },
-    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
