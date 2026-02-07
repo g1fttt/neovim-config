@@ -225,4 +225,8 @@ return {
     version = "2.0.0",
     config = true,
   },
+  {
+    "ojroques/nvim-bufdel",
+    opts = { quit = false },
+  },
 }

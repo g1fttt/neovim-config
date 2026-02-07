@@ -18,6 +18,18 @@ return {
     },
   },
   {
+    event = "BufRead",
+    opts = {
+      callback = function(ev)
+        local buf_type = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
+        if buf_type ~= "oil" then
+          -- Fix tabs being hidden after closing them
+          vim.api.nvim_set_option_value("buflisted", true, { buf = ev.buf })
+        end
+      end,
+    },
+  },
+  {
     event = "LspAttach",
     opts = {
       callback = function()

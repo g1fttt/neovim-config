@@ -1,7 +1,6 @@
 local M = {
   "nvimdev/dashboard-nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  version = "*",
   event = "VimEnter",
   opts = {
     theme = "doom",
