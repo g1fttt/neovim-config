@@ -18,8 +18,8 @@ local servers_settings = {
       root_markers = { ".luarc.json" },
       settings = {
         Lua = {
-          runtime = {
-            pathStrict = false,
+          diagnostics = {
+            globals = { "vim" },
           },
         },
       },
