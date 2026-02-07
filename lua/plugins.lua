@@ -223,6 +223,6 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "BufEnter",
     version = "2.0.0",
-    opts = {},
+    config = true,
   },
 }
