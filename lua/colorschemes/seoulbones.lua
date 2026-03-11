@@ -3,8 +3,6 @@ local utils = require("utils")
 local M = {}
 
 function M.colorscheme_config()
-  vim.g.seoulbones_transparent_background = true
-
   local colorscheme = require(vim.g.colors_name)
 
   local lush = require("lush")
@@ -14,16 +12,8 @@ function M.colorscheme_config()
     return {
       CursorLine { bg = colorscheme.CursorLine.bg.da(50) },
       ColorColumn { bg = colorscheme.Statement.fg.da(50) },
-      Cursor { bg = nil },
-      NormalFloat { bg = nil },
-      Pmenu { bg = nil },
-      SnippetTabStop { bg = nil },
 
       DiagnosticUnnecessary { fg = nil },
-      DiagnosticVirtualTextError { fg = colorscheme.DiagnosticError.fg, bg = nil },
-      DiagnosticVirtualTextWarn { fg = colorscheme.DiagnosticWarn.fg, bg = nil },
-      DiagnosticVirtualTextHint { fg = colorscheme.DiagnosticHint.fg, bg = nil },
-      DiagnosticVirtualTextInfo { fg = colorscheme.DiagnosticInfo.fg, bg = nil },
 
       DiffAdd { bg = colorscheme.DiffAdd.bg.da(50) },
       DiffDelete { bg = colorscheme.DiffDelete.bg.da(50) },

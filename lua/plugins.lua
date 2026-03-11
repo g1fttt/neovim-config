@@ -7,6 +7,23 @@ return {
     config = require("colorschemes.seoulbones").colorscheme_config,
   },
   {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      extra_groups = {
+        "Cursor",
+        "NormalFloat",
+        "Pmenu",
+        "SnippetTabStop",
+
+        "DiagnosticVirtualTextError",
+        "DiagnosticVirtualTextWarn",
+        "DiagnosticVirtualTextHint",
+        "DiagnosticVirtualTextInfo",
+      },
+      exclude_groups = { "CursorLine", "StatusLine", "StatusLineNC" },
+    },
+  },
+  {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     version = "2.15.0",
@@ -78,6 +95,7 @@ return {
           "typescript", "css",
           "html", "tsx",
           "markdown", "vue",
+          "sql",
         },
         highlight = { enable = true },
       })
