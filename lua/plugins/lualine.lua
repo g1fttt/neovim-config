@@ -5,7 +5,6 @@ end
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  version = "*",
   config = function()
     local theme = require("lualine.themes.auto")
     local utils = require("utils")

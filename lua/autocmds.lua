@@ -38,6 +38,16 @@ return {
     }
   },
   {
+    event = "FileType",
+    opts = {
+      callback = function()
+        pcall(vim.treesitter.start)
+
+        vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+      end,
+    },
+  },
+  {
     event = "User",
     opts = {
       pattern = "BufDeletePost",

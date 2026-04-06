@@ -57,6 +57,9 @@ M.spec = {
     function() Snacks.lazygit.open() end,
     desc = "Open LazyGit",
   },
+  {
+    "<leader>gw", "<CMD>HopWord<CR>", desc = "Go (hop) to a word"
+  },
 
   {
     group = "FzfLua",

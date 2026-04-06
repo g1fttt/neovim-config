@@ -15,9 +15,15 @@ return {
 
       javascript = { "prettier" },
       typescript = { "prettier" },
+
       vue = { "prettier" },
 
       go = { "gofmt" },
+
+      clojure = {
+        command = "cljfmt",
+        lsp_format = "fallback",
+      },
     },
     formatters = {
       prettier = {

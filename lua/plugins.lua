@@ -81,25 +81,27 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    branch = "master",
-    build = ":TSUpdate",
-    config = function()
-      ---@diagnostic disable: missing-fields
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "rust", "c",
-          "cpp", "go",
-          "java", "python",
-          "lua", "javascript",
-          "typescript", "css",
-          "html", "tsx",
-          "markdown", "vue",
-          "sql",
-        },
-        highlight = { enable = true },
-      })
-      ---@diagnostic enable
+    branch = "main",
+    init = function()
+      local ensure_installed = {
+        "rust", "c",
+        "cpp", "go",
+        "java", "python",
+        "lua", "javascript",
+        "typescript", "css",
+        "html", "tsx",
+        "markdown", "vue",
+        "sql", "clojure"
+      }
+
+      local already_installed = require("nvim-treesitter").get_installed()
+      local to_install = vim.iter(ensure_installed)
+          :filter(function(parser)
+            return not vim.tbl_contains(already_installed, parser)
+          end)
+          :totable()
+
+      require("nvim-treesitter").install(to_install)
     end,
   },
   {
@@ -139,7 +141,7 @@ return {
   {
     "saghen/blink.cmp",
     event = "LspAttach",
-    version = "1.7.0",
+    version = "1.10.2",
     opts = {
       keymap = require("mappings").blink_cmp(),
       completion = {
@@ -185,7 +187,7 @@ return {
   },
   {
     "folke/snacks.nvim",
-    version = "2.28.0",
+    version = "2.31.0",
     opts = {
       lazygit = { enabled = true },
     },
@@ -211,7 +213,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     ft = "markdown",
-    version = "8.10.0",
+    version = "8.12.0",
     opts = {
       code = {
         language = false,
@@ -240,11 +242,16 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "BufEnter",
-    version = "2.0.0",
+    version = "2.1.0",
     config = true,
   },
   {
     "ojroques/nvim-bufdel",
     opts = { quit = false },
+  },
+  {
+    "smoka7/hop.nvim",
+    version = "2.7.2",
+    config = true,
   },
 }

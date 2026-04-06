@@ -60,6 +60,14 @@ local servers_settings = {
       filetypes = { "c", "cpp", "cxx" },
     },
   },
+  {
+    name = "clojure-lsp",
+    opts = {
+      cmd = { "clojure-lsp", "listen" },
+      filetypes = { "clojure" },
+      root_markers = { "project.clj" },
+    },
+  },
   require("lsp.vtsls"),
   require("lsp.vue_ls"),
 }
