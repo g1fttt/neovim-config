@@ -1,6 +1,6 @@
 The configuration that allows me to get things done, rather than procrastinating by modifying it.
 
-## Introducrtion
+## Introduction
 This <i>NeoVim</i> config was created as a result of being curious and in love with
 idea of programming <strong>your own editor config</strong> with the only features
 you ever needed.

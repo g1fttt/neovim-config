@@ -40,6 +40,13 @@ local servers_settings = {
     },
   },
   {
+    name = "zls",
+    opts = {
+      cmd = { "zls" },
+      filetypes = { "zig" },
+    },
+  },
+  {
     name = "vscode-css-language-server",
     opts = {
       cmd = { "vscode-css-language-server", "--stdio" },
