@@ -46,12 +46,16 @@ function M.lualine_config(theme)
 end
 
 function M.hlchunk_config(opts)
+  local indent_fg_color = "#707070"
+  if require("options").extras.transparency then
+    indent_fg_color = "#505050"
+  end
+
+  opts.indent.style = { { fg = indent_fg_color } }
+
   local special_color = utils.hl_group_color("Special")
-
-  opts.line_num.style = { { fg = special_color.fg } }
-  opts.indent.style = { { fg = "#505050" } }
-
   opts.chunk.style = { { fg = special_color.fg } }
+  opts.line_num.style = { { fg = special_color.fg } }
 end
 
 return M

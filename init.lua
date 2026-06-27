@@ -6,8 +6,10 @@ local function set_editor_options(options)
       utils.report_error({ "The provided option is not a table:", scope_value })
     end
 
-    for option_name, option_value in pairs(scope_value) do
-      vim[scope_name][option_name] = option_value
+    if scope_name ~= "extras" then
+      for option_name, option_value in pairs(scope_value) do
+        vim[scope_name][option_name] = option_value
+      end
     end
   end
 end

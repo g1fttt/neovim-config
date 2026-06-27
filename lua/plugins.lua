@@ -8,6 +8,7 @@ return {
   },
   {
     "xiyaowong/transparent.nvim",
+    cond = function() return require("options").extras.transparency end,
     opts = {
       extra_groups = {
         "Cursor",

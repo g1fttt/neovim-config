@@ -1,6 +1,6 @@
 return {
   opt = {
-    number = true,
+    relativenumber = true,
     swapfile = false,
     cursorline = true,
     termguicolors = true,
@@ -21,5 +21,8 @@ return {
     mapleader = " ",
     maplocalleader = " ",
     colors_name = "seoulbones",
+  },
+  extras = {
+    transparency = false,
   },
 }
