@@ -6,7 +6,21 @@ local servers_settings = {
       filetypes = { "rust" },
       root_markers = { "Cargo.toml" },
       settings = {
-        checkOnSave = { command = "clippy" },
+        ["rust-analyzer"] = {
+          checkOnSave = true,
+          check = {
+            command = "clippy",
+            features = "all",
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true,
+          },
+        }
       },
     },
   },
@@ -63,7 +77,7 @@ local servers_settings = {
   {
     name = "clangd",
     opts = {
-      cmd = { "clangd", "--background-index", "--clang-tidy", "--experimental-modules-support" },
+      cmd = { "clangd", "--background-index", "--clang-tidy" },
       filetypes = { "c", "cpp", "cxx" },
     },
   },
