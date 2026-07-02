@@ -4,11 +4,13 @@ return {
     dependencies = { "rktjmp/lush.nvim" },
     priority = 1000,
     lazy = false,
-    config = require("colorschemes.seoulbones").colorscheme_config,
+    config = require("colorschemes.seoulbones").colorscheme_config
   },
   {
     "xiyaowong/transparent.nvim",
-    cond = function() return require("options").extras.transparency end,
+    cond = function()
+      return require("options").extras.transparency
+    end,
     opts = {
       extra_groups = {
         "Cursor",
@@ -93,7 +95,7 @@ return {
         "html", "tsx",
         "markdown", "vue",
         "sql", "clojure",
-        "zig"
+        "zig", "scss",
       }
 
       local already_installed = require("nvim-treesitter").get_installed()

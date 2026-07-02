@@ -1,5 +1,6 @@
 return {
   opt = {
+    number = true,
     relativenumber = true,
     swapfile = false,
     cursorline = true,

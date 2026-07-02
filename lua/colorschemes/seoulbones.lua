@@ -18,6 +18,8 @@ function M.colorscheme_config()
       DiffAdd { bg = colorscheme.DiffAdd.bg.da(50) },
       DiffDelete { bg = colorscheme.DiffDelete.bg.da(50) },
       DiffChange { bg = colorscheme.DiffChange.bg.da(50) },
+
+      SnippetTabStop { bg = nil },
     }
   end)
   ---@diagnostic enable
