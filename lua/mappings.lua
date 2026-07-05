@@ -67,8 +67,8 @@ M.spec = {
       icon = "󰍉",
       color = "blue",
     },
-    { "<leader>f", "<CMD>FzfLua files<CR>",                      desc = "File picker" },
-    { "<leader>s", "<CMD>FzfLua lsp_live_workspace_symbols<CR>", desc = "Workspace symbols" },
+    { "<leader>f", "<CMD>FzfLua files<CR>",     desc = "File picker" },
+    { "<leader>s", "<CMD>FzfLua live_grep<CR>", desc = "Global search" },
     {
       "<C-p>",
       function()

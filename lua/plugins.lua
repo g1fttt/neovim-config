@@ -122,7 +122,7 @@ return {
   },
   {
     "barrett-ruth/live-server.nvim",
-    build = "bun install -g live-server",
+    build = "npm install -g live-server",
     cmd = { "LiveServerToggle" },
     init = function()
       vim.g.is_live_server_active = false
