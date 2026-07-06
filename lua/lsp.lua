@@ -1,30 +1,5 @@
 local servers_settings = {
   {
-    name = "rust_analyzer",
-    opts = {
-      cmd = { "rust-analyzer" },
-      filetypes = { "rust" },
-      root_markers = { "Cargo.toml" },
-      settings = {
-        ["rust-analyzer"] = {
-          checkOnSave = true,
-          check = {
-            command = "clippy",
-            features = "all",
-          },
-          cargo = {
-            buildScripts = {
-              enable = true,
-            },
-          },
-          procMacro = {
-            enable = true,
-          },
-        }
-      },
-    },
-  },
-  {
     name = "lua_ls",
     opts = {
       cmd = { "lua-language-server" },
@@ -93,29 +68,101 @@ local servers_settings = {
   require("lsp.vue_ls"),
 }
 
+local function setup_diagnostic_handlers()
+  local orig_vt_handler = vim.diagnostic.handlers.virtual_text
+
+  vim.diagnostic.handlers.virtual_text = {
+    show = function(namespace, bufnr, diags, opts)
+      -- Diagnostics from all possible sources in one table
+      local true_all_diags = {}
+
+      for _, diag in ipairs(vim.diagnostic.get(bufnr)) do
+        if diag.namespace ~= namespace then
+          table.insert(true_all_diags, diag)
+        end
+      end
+
+      for _, diag in ipairs(diags) do
+        table.insert(true_all_diags, diag)
+      end
+
+      local line_data = {}
+
+      for _, diag in ipairs(true_all_diags) do
+        local lnum = diag.lnum
+
+        if not line_data[lnum] then
+          line_data[lnum] = { best = diag, count = 1 }
+        else
+          line_data[lnum].count = line_data[lnum].count + 1
+
+          local best = line_data[lnum].best
+
+          -- Smaller means more severe:
+          -- Error = 1
+          -- ...
+          -- Info = 3
+          if diag.severity < best.severity then
+            line_data[lnum].best = diag
+          elseif diag.severity == best.severity then
+            -- Longer message might mean something more important...
+            if diag.message > best.message then
+              line_data[lnum].best = diag
+            end
+          end
+        end
+      end
+
+      local filtered_diags = {}
+
+      for _, diag in ipairs(diags) do
+        local lnum = diag.lnum
+
+        if line_data[lnum].best == diag then
+          diag._total_count = line_data[lnum].count
+          table.insert(filtered_diags, diag)
+        end
+      end
+
+      orig_vt_handler.show(namespace, bufnr, filtered_diags, opts)
+    end,
+    hide = orig_vt_handler.hide,
+  }
+end
+
 local M = {
   diagnostic_icons = {
     error = "",
     warn = "",
-    hint = "",
     info = "",
+    hint = "",
+    virtual_text_prefix = "",
   },
 }
 
 function M.init()
-  local diagnostic_config = {
+  setup_diagnostic_handlers()
+
+  vim.diagnostic.config({
     signs = {
       text = {
         [vim.diagnostic.severity.ERROR] = M.diagnostic_icons.error,
         [vim.diagnostic.severity.WARN]  = M.diagnostic_icons.warn,
-        [vim.diagnostic.severity.HINT]  = M.diagnostic_icons.hint,
         [vim.diagnostic.severity.INFO]  = M.diagnostic_icons.info,
+        [vim.diagnostic.severity.HINT]  = M.diagnostic_icons.hint,
       },
     },
-    virtual_text = true,
-  }
-
-  vim.diagnostic.config(diagnostic_config)
+    virtual_text = {
+      spacing = 2,
+      source = false,
+      prefix = function(diag)
+        ---@diagnostic disable-next-line: undefined-field
+        return string.rep(M.diagnostic_icons.virtual_text_prefix, diag._total_count)
+      end,
+      severity = { min = vim.diagnostic.severity.WARN },
+    },
+    severity_sort = true,
+  })
 
   for _, lsp_value in ipairs(servers_settings) do
     if (type(lsp_value) ~= "table") then

@@ -22,6 +22,7 @@ return {
     mapleader = " ",
     maplocalleader = " ",
     colors_name = "seoulbones",
+    rustaceanvim = require("options.rustaceanvim"),
   },
   extras = {
     transparency = false,

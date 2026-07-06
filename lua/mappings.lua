@@ -5,16 +5,31 @@ function M.on_lsp_attach()
     {
       group = "LSP",
       icon = {
-        icon = "",
+        icon = "󰁥",
         color = "cyan",
       },
-      { "<leader>I", "<CMD>FzfLua lsp_implementations<CR>",   desc = "Struct/class implementations" },
-      { "<leader>a", "<CMD>FzfLua lsp_code_actions<CR>",      desc = "Code actions" },
-      { "<leader>k", vim.lsp.buf.hover,                       desc = "Documentation hover" },
-      { "<leader>d", vim.diagnostic.open_float,               desc = "Diagnostic hover" },
-      { "<leader>D", "<CMD>FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics" },
-      { "gd",        vim.lsp.buf.definition,                  desc = "Go to definition" }
+      { "<leader>I",  "<CMD>FzfLua lsp_implementations<CR>",   desc = "Struct/class implementations" },
+      { "<leader>a",  "<CMD>FzfLua lsp_code_actions<CR>",      desc = "Code actions" },
+      { "<leader>k",  vim.lsp.buf.hover,                       desc = "Documentation hover" },
+      { "<leader>d",  vim.diagnostic.open_float,               desc = "Diagnostic hover" },
+      { "<leader>D",  "<CMD>FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics" },
+      { "<leader>rn", vim.lsp.buf.rename,                      desc = "Rename symbol" },
+      { "gd",         vim.lsp.buf.definition,                  desc = "Go to definition" },
     },
+  })
+end
+
+function M.on_rust_analyzer_attach()
+  require("which-key").add({
+    {
+      group = "Rust",
+      icon = {
+        icon = "",
+        color = "orange",
+      },
+      { "<leader>re", "<CMD>RustLsp expandMacro<CR>",        desc = "Expand rust macro" },
+      { "gr",         "<CMD>RustLsp relatedDiagnostics<CR>", desc = "Go to related diagnostics" },
+    }
   })
 end
 
@@ -49,7 +64,7 @@ M.spec = {
 
       require("live-server").toggle(current_dir)
     end,
-    desc = "Toggle live server"
+    desc = "Toggle live server",
   },
   { "<leader>tm", "<CMD>RenderMarkdown toggle<CR>", desc = "Toggle markdown render" },
   {
@@ -58,14 +73,14 @@ M.spec = {
     desc = "Open LazyGit",
   },
   {
-    "<leader>gw", "<CMD>HopWord<CR>", desc = "Go (hop) to a word"
+    "<leader>gw", "<CMD>HopWord<CR>", desc = "Go (hop) to a word",
   },
 
   {
     group = "FzfLua",
     icon = {
       icon = "󰍉",
-      color = "blue",
+      color = "purple",
     },
     { "<leader>f", "<CMD>FzfLua files<CR>",     desc = "File picker" },
     { "<leader>s", "<CMD>FzfLua live_grep<CR>", desc = "Global search" },
@@ -88,6 +103,15 @@ M.spec = {
     { "[b",        "<CMD>BufferPrevious<CR>", desc = "Go to previous buffer" },
     { "]b",        "<CMD>BufferNext<CR>",     desc = "Go to next buffer" },
     { "<leader>w", "<CMD>BufDel<CR>",         desc = "Close current buffer" },
+  },
+
+  {
+    group = "Windows",
+    icon = {
+      icon = "󰖯",
+      color = "red",
+    },
+    { "<M-w>", "<C-w>", noremap = true, desc = "Windows managing" },
   },
 }
 

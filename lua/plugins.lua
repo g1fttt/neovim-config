@@ -133,7 +133,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      preset = "modern",
+      preset = "helix",
       spec = require("mappings").spec,
       delay = 300,
       icons = {
@@ -257,5 +257,10 @@ return {
     "smoka7/hop.nvim",
     version = "2.7.2",
     config = true,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "9.0.5",
+    lazy = false,
   },
 }
