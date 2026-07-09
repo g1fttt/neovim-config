@@ -32,7 +32,6 @@ return {
               info = diagnostic_icons.info .. " ",
               hint = diagnostic_icons.hint .. " ",
             },
-            update_in_insert = true,
           }
         },
         lualine_x = { live_server_status, "filetype" },

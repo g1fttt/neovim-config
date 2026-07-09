@@ -9,7 +9,7 @@ return {
     signcolumn = "yes",
     undofile = true,
     hlsearch = true,
-    colorcolumn = "100",
+    colorcolumn = "80",
   },
   o = {
     expandtab = true,

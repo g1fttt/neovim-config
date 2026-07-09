@@ -41,6 +41,15 @@ function M.blink_cmp()
   }
 end
 
+function M.oil()
+  return {
+    ["<CR>"] = "actions.select",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["<C-p>"] = "actions.preview",
+    ["<C-r>"] = "actions.refresh",
+  }
+end
+
 M.spec = {
   { "<leader>",  "<Nop>",           silent = true },
 

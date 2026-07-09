@@ -29,12 +29,14 @@ return {
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    version = "2.15.0",
+    version = "2.16.0",
     cmd = { "Oil" },
     opts = {
       columns = { "icon", "size" },
       buf_options = { bufhidden = "wipe" },
       skip_confirm_for_simple_edits = true,
+      keymaps = require("mappings").oil(),
+      use_default_keymaps = false,
       view_options = {
         show_hidden = true,
         is_always_hidden = function(name)
@@ -46,6 +48,7 @@ return {
   {
     "romgrk/barbar.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "BufEnter",
     version = "1.9.1",
     opts = {
       animation = false,
@@ -75,10 +78,8 @@ return {
           delay = 0,
         },
       }
-      local utils = require("utils")
 
-      utils.desired_colorscheme().hlchunk_config(opts)
-
+      require("utils").desired_colorscheme().hlchunk_config(opts)
       require("hlchunk").setup(opts)
     end
   },
@@ -112,9 +113,7 @@ return {
     "ibhagwan/fzf-lua",
     config = function()
       local fzf = require("fzf-lua")
-
       fzf.register_ui_select()
-
       fzf.setup({
         files = { follow = true },
       })
@@ -180,12 +179,15 @@ return {
   },
   {
     "catgoose/nvim-colorizer.lua",
+    ft = { "css", "scss", "html" },
     opts = {
+      filetypes = { "css", "scss", "html" },
       lazy_load = true,
-      user_default_options = {
-        names = false,
-        css = true,
-        tailwind = true,
+      options = {
+        parsers = {
+          css = true,
+          sass = { enable = true },
+        },
       },
     },
   },
