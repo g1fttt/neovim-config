@@ -97,6 +97,7 @@ return {
         "markdown", "vue",
         "sql", "clojure",
         "zig", "scss",
+        "wgsl_bevy"
       }
 
       local already_installed = require("nvim-treesitter").get_installed()
