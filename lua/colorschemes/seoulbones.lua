@@ -7,57 +7,87 @@ function M.colorscheme_config()
 
   local lush = require("lush")
 
+  local light_palette = {
+    CursorLine = { bg = colorscheme.CursorLine.bg.da(5) },
+    ColorColumn = { bg = colorscheme.Statement.fg.da(5) },
+
+    DiagnosticUnnecessary = { fg = nil },
+    SnippetTabStop = { bg = nil },
+  }
+
+  local dark_palette = {
+    CursorLine = { bg = colorscheme.CursorLine.bg.da(50) },
+    ColorColumn = { bg = colorscheme.Statement.fg.da(50) },
+
+    DiffAdd = { bg = colorscheme.DiffAdd.bg.da(50) },
+    DiffDelete = { bg = colorscheme.DiffDelete.bg.da(50) },
+    DiffChange = { bg = colorscheme.DiffChange.bg.da(50) },
+  }
+
+  local p = vim.opt.background == "dark" and dark_palette or light_palette
+
   ---@diagnostic disable: undefined-global
   local spec = lush.extends({ colorscheme }).with(function()
     return {
-      CursorLine { bg = colorscheme.CursorLine.bg.da(50) },
-      ColorColumn { bg = colorscheme.Statement.fg.da(50) },
+      CursorLine { bg = p.CursorLine.bg },
+      ColorColumn { bg = p.ColorColumn.bg },
+
+      DiffAdd { bg = p.DiffAdd and p.DiffAdd.bg or colorscheme.DiffAdd.bg },
+      DiffDelete { bg = p.DiffDelete and DiffDelete.bg or colorscheme.DiffDelete.bg },
+      DiffChange { bg = p.DiffChange and DiffChange.bg or colorscheme.DiffChange.bg },
 
       DiagnosticUnnecessary { fg = nil },
-
-      DiffAdd { bg = colorscheme.DiffAdd.bg.da(50) },
-      DiffDelete { bg = colorscheme.DiffDelete.bg.da(50) },
-      DiffChange { bg = colorscheme.DiffChange.bg.da(50) },
-
       SnippetTabStop { bg = nil },
     }
   end)
-  ---@diagnostic enable
+  ---@diagnostic enable: undefined-global
 
   lush(spec)
 end
 
 function M.lualine_config(theme)
-  local ident_color = utils.hl_group_color("Identifier")
+  local fg_color = utils.is_in_dark_mode()
+      and utils.hl_group_color("Identifier").fg
+      or "#000000"
 
-  theme.normal.a.fg = ident_color.fg
+  theme.normal.a.fg = fg_color
   theme.normal.a.bg = utils.hl_group_color("Comment").fg
 
-  theme.insert.a.fg = ident_color.fg
+  theme.insert.a.fg = fg_color
 
-  theme.visual.a.fg = ident_color.fg
+  theme.visual.a.fg = fg_color
   theme.visual.a.bg = utils.hl_group_color("Keyword").fg
 
-  theme.replace.a.fg = ident_color.fg
+  theme.replace.a.fg = fg_color
 
-  theme.command.a.fg = ident_color.fg
+  theme.command.a.fg = fg_color
 
-  theme.inactive.a.fg = ident_color.fg
+  theme.inactive.a.fg = fg_color
 
   return theme
 end
 
 function M.hlchunk_config(opts)
-  local indent_fg_color = "#707070"
-  if require("options").extras.transparency then
-    indent_fg_color = "#505050"
+  local indent_fg_color = "#000000"
+  local chunk_fg_color = "#896788"
+
+  local is_transparent = require("options").extras.transparency
+
+  if utils.is_in_dark_mode() then
+    indent_fg_color = "#707070"
+    chunk_fg_color = "#BCBCD3"
+
+    if is_transparent then
+      indent_fg_color = "#505050"
+    end
+  else
+    indent_fg_color = "#bfbfbf"
   end
 
   opts.indent.style = { { fg = indent_fg_color } }
 
-  local special_color = utils.hl_group_color("Special")
-  opts.chunk.style = { { fg = special_color.fg } }
-  opts.line_num.style = { { fg = special_color.fg } }
+  opts.chunk.style = { { fg = chunk_fg_color } }
+  opts.line_num.style = { { fg = chunk_fg_color } }
 end
 
 return M

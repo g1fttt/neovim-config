@@ -10,7 +10,6 @@ return {
     undofile = true,
     hlsearch = true,
     colorcolumn = "100",
-    background = "dark",
   },
   o = {
     expandtab = true,

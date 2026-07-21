@@ -27,4 +27,8 @@ function M.desired_colorscheme()
   end
 end
 
+function M.is_in_dark_mode()
+  return vim.o.background == "dark"
+end
+
 return M
