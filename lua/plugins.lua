@@ -95,9 +95,8 @@ return {
         "typescript", "css",
         "html", "tsx",
         "markdown", "vue",
-        "sql", "clojure",
-        "zig", "scss",
-        "wgsl_bevy"
+        "sql", "odin",
+        "scss", "tera",
       }
 
       local already_installed = require("nvim-treesitter").get_installed()

@@ -29,13 +29,6 @@ local servers_settings = {
     },
   },
   {
-    name = "zls",
-    opts = {
-      cmd = { "zls" },
-      filetypes = { "zig" },
-    },
-  },
-  {
     name = "vscode-css-language-server",
     opts = {
       cmd = { "vscode-css-language-server", "--stdio" },
@@ -57,11 +50,10 @@ local servers_settings = {
     },
   },
   {
-    name = "clojure-lsp",
+    name = "ols",
     opts = {
-      cmd = { "clojure-lsp", "listen" },
-      filetypes = { "clojure" },
-      root_markers = { "project.clj" },
+      cmd = { "ols" },
+      filetypes = { "odin" },
     },
   },
   require("lsp.vtsls"),

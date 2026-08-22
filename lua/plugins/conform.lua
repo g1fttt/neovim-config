@@ -20,10 +20,7 @@ return {
 
       go = { "gofmt" },
 
-      clojure = {
-        command = "cljfmt",
-        lsp_format = "fallback",
-      },
+      odin = { "odinfmt" },
     },
     formatters = {
       prettier = {
@@ -34,10 +31,8 @@ return {
 
           -- Return type of util.from_node_modules is fun(self: conform.FormatterConfig, ctx: conform.Context): string
           ---@diagnostic disable: redundant-parameter
-          return
-          -- I'm using bun and it creates prettier.exe in opposite to npm,
-          -- which creates prettier.cmd
-              util.from_node_modules(fs.is_windows and "prettier.exe" or "prettier")(self, bufnr)
+          -- I'm using bun and it creates prettier.exe in opposite to npm, which creates prettier.cmd
+          return util.from_node_modules(fs.is_windows and "prettier.exe" or "prettier")(self, bufnr)
           ---@diagnostic enable
         end,
       },
