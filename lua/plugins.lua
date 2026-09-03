@@ -126,7 +126,6 @@ return {
     init = function()
       vim.g.is_live_server_active = false
     end,
-    config = true,
   },
   {
     "folke/which-key.nvim",
