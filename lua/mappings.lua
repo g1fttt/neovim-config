@@ -41,15 +41,6 @@ function M.blink_cmp()
   }
 end
 
-function M.oil()
-  return {
-    ["<CR>"] = "actions.select",
-    ["-"] = { "actions.parent", mode = "n" },
-    ["<C-p>"] = "actions.preview",
-    ["<C-r>"] = "actions.refresh",
-  }
-end
-
 M.spec = {
   { "<leader>",  "<Nop>",           silent = true },
 
@@ -63,7 +54,11 @@ M.spec = {
   { "<Esc>",     "<CMD>nohlsearch<CR>",                   silent = true },
 
   { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
-  { "<leader>o", "<CMD>Oil<CR>",                          desc = "Open current directory as a buffer" },
+  {
+    "<leader>o",
+    function() require("fyler").toggle() end,
+    desc = "Toggle buffer-like file tree"
+  },
   {
     "<leader>tl",
     function()

@@ -27,21 +27,14 @@ return {
     },
   },
   {
-    "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    version = "2.16.0",
-    cmd = { "Oil" },
+    "FylerOrg/fyler.nvim",
     opts = {
-      columns = { "icon", "size" },
-      buf_options = { bufhidden = "wipe" },
-      skip_confirm_for_simple_edits = true,
-      keymaps = require("mappings").oil(),
-      use_default_keymaps = false,
-      view_options = {
-        show_hidden = true,
-        is_always_hidden = function(name)
-          return name == ".git"
-        end
+      kind = "split_left",
+      kind_presets = {
+        split_left = { width = "15%" },
+      },
+      integrations = {
+        icon = "nvim_web_devicons",
       },
     },
   },
@@ -49,7 +42,7 @@ return {
     "romgrk/barbar.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "BufEnter",
-    version = "1.9.1",
+    commit = "337ecfa",
     opts = {
       animation = false,
       clickable = false,
@@ -171,7 +164,6 @@ return {
         "nofile",
         "terminal",
         "prompt",
-        "oil",
         "fidget",
       },
     },
