@@ -79,6 +79,11 @@ M.spec = {
   {
     "<leader>gw", "<CMD>HopWord<CR>", desc = "Go (hop) to a word",
   },
+  {
+    "<leader>s",
+    function() require("search").open("grep") end,
+    desc = "Global search",
+  },
 
   {
     group = "FzfLua",
@@ -86,8 +91,6 @@ M.spec = {
       icon = "󰍉",
       color = "purple",
     },
-    { "<leader>f", "<CMD>FzfLua files<CR>",     desc = "File picker" },
-    { "<leader>s", "<CMD>FzfLua live_grep<CR>", desc = "Global search" },
     {
       "<C-p>",
       function()

@@ -38,6 +38,8 @@ function M.colorscheme_config()
 
       DiagnosticUnnecessary { fg = nil },
       SnippetTabStop { bg = nil },
+
+      SnacksPickerDir { fg = colorscheme.Constant.fg },
     }
   end)
   ---@diagnostic enable: undefined-global
