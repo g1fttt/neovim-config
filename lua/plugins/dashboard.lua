@@ -26,6 +26,7 @@ local M = {
         { desc = "" },
       },
       vertical_center = true,
+      disable_move = true,
     },
   },
 }
