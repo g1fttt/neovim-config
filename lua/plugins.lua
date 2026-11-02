@@ -135,8 +135,12 @@ return {
   },
   {
     "saghen/blink.cmp",
+    dependencies = { "saghen/blink.lib" },
     event = "LspAttach",
-    version = "1.10.2",
+    commit = "86cfb6b",
+    build = function()
+      require("blink.cmp").build():pwait()
+    end,
     opts = {
       keymap = require("mappings").blink_cmp(),
       completion = {
@@ -191,6 +195,7 @@ return {
   },
   {
     "Bekaboo/deadcolumn.nvim",
+    event = "BufEnter",
     version = "1.0.2",
     opts = {
       scope = function()
@@ -248,11 +253,13 @@ return {
   },
   {
     "smoka7/hop.nvim",
+    event = "BufEnter",
     version = "2.7.2",
     config = true,
   },
   {
     "mrcjkb/rustaceanvim",
+    ft = "rust",
     version = "9.0.5",
     lazy = false,
   },
