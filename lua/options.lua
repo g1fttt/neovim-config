@@ -22,7 +22,15 @@ return {
     mapleader = " ",
     maplocalleader = " ",
     colors_name = "seoulbones",
-    rustaceanvim = require("options.rustaceanvim"),
+    rustaceanvim = {
+      server = {
+        on_attach = require("mappings").on_rust_analyzer_attach,
+        default_settings = {
+          ["rust-analyzer"] = {},
+        },
+      },
+      dap = {},
+    },
   },
   extras = {
     transparency = false,

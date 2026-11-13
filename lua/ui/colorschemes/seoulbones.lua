@@ -1,10 +1,9 @@
-local utils = require("utils")
+local ui = require("ui")
 
 local M = {}
 
-function M.colorscheme_config()
+function M.lazy_config()
   local colorscheme = require(vim.g.colors_name)
-
   local lush = require("lush")
 
   local light_palette = {
@@ -48,7 +47,9 @@ function M.colorscheme_config()
 end
 
 function M.lualine_config(theme)
-  local fg_color = utils.is_in_dark_mode()
+  local utils = require("utils")
+
+  local fg_color = ui.is_in_dark_mode()
       and utils.hl_group_color("Identifier").fg
       or "#000000"
 
@@ -75,7 +76,7 @@ function M.hlchunk_config(opts)
 
   local is_transparent = require("options").extras.transparency
 
-  if utils.is_in_dark_mode() then
+  if ui.is_in_dark_mode() then
     indent_fg_color = "#707070"
     chunk_fg_color = "#BCBCD3"
 

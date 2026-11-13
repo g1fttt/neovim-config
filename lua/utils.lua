@@ -21,14 +21,4 @@ function M.hl_group_color(hl_group_name)
   }
 end
 
-function M.desired_colorscheme()
-  if vim.g.colors_name == "seoulbones" then
-    return require("colorschemes.seoulbones")
-  end
-end
-
-function M.is_in_dark_mode()
-  return vim.o.background == "dark"
-end
-
 return M

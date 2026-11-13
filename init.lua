@@ -70,10 +70,7 @@ require("lsp").init()
 
 handle_lazy_plugin_manager({
   "plugins",
-  "plugins.lualine",
-  "plugins.dashboard",
-  "plugins.fidget",
-  "plugins.conform",
+  "ui.plugins"
 })
 
 set_misc_options()

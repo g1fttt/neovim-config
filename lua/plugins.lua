@@ -4,7 +4,7 @@ return {
     dependencies = { "rktjmp/lush.nvim" },
     priority = 1000,
     lazy = false,
-    config = require("colorschemes.seoulbones").colorscheme_config
+    config = require("ui.colorschemes.seoulbones").lazy_config
   },
   {
     "xiyaowong/transparent.nvim",
@@ -29,12 +29,13 @@ return {
   {
     "FylerOrg/fyler.nvim",
     opts = {
-      kind = "split_left",
-      kind_presets = {
-        split_left = { width = "15%" },
-      },
-      integrations = {
-        icon = "nvim_web_devicons",
+      kind = "floating",
+      integrations = { icon = "nvim_web_devicons" },
+      ui = {
+        hidden_items = {
+          always_visible = { ".gitignore", ".env", ".env.example", ".prettierrc.json", ".vscode" },
+          always_hidden = { "node_modules" },
+        },
       },
     },
   },
@@ -72,7 +73,7 @@ return {
         },
       }
 
-      require("utils").desired_colorscheme().hlchunk_config(opts)
+      require("ui").desired_colorscheme().hlchunk_config(opts)
       require("hlchunk").setup(opts)
     end
   },
@@ -263,4 +264,45 @@ return {
     version = "9.0.5",
     lazy = false,
   },
+  {
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    commit = "dca1a19",
+    opts = {
+      formatters_by_ft = {
+        lua = { lsp_format = "fallback" },
+
+        rust = { "rustfmt" },
+
+        html = { "superhtml" },
+        htm = { "superhtml" },
+
+        css = { "prettier" },
+
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+
+        vue = { "prettier" },
+
+        go = { "gofmt" },
+
+        odin = { "odinfmt" },
+      },
+      formatters = {
+        prettier = {
+          append_args = { "--no-semi" },
+          command = function(self, bufnr)
+            local fs = require("conform.fs")
+            local util = require("conform.util")
+
+            -- Return type of util.from_node_modules is fun(self: conform.FormatterConfig, ctx: conform.Context): string
+            ---@diagnostic disable: redundant-parameter
+            -- I'm using bun and it creates prettier.exe in opposite to npm, which creates prettier.cmd
+            return util.from_node_modules(fs.is_windows and "prettier.exe" or "prettier")(self, bufnr)
+            ---@diagnostic enable
+          end,
+        },
+      },
+    },
+  }
 }

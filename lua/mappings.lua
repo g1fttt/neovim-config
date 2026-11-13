@@ -81,7 +81,7 @@ M.spec = {
   },
   {
     "<leader>s",
-    function() require("search").open("grep") end,
+    function() require("ui.search").open("grep") end,
     desc = "Global search",
   },
 
