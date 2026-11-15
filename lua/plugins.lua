@@ -26,7 +26,7 @@ return {
       local opts = {
         line_num = {
           enable = true,
-          style = { utils.hl_group_color("IndentGuide") },
+          style = { utils.hl_group_color("IndentChunk") },
         },
         indent = {
           enable = true,
@@ -196,10 +196,6 @@ return {
         { path = "snacks.nvim",        words = { "Snacks" } },
       },
     },
-  },
-  {
-    "ojroques/nvim-bufdel",
-    opts = { quit = false },
   },
   {
     "smoka7/hop.nvim",
