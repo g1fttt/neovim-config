@@ -64,8 +64,6 @@ M.spec = {
     function()
       local current_dir = vim.fn.expand("%:p:h")
 
-      vim.g.is_live_server_active = not vim.g.is_live_server_active
-
       require("live-server").toggle(current_dir)
     end,
     desc = "Toggle live server",

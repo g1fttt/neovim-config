@@ -1,33 +1,7 @@
 return {
   {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = { "rktjmp/lush.nvim" },
-    priority = 1000,
-    lazy = false,
-    config = require("ui.colorschemes.seoulbones").lazy_config
-  },
-  {
-    "xiyaowong/transparent.nvim",
-    cond = function()
-      return require("options").extras.transparency
-    end,
-    opts = {
-      extra_groups = {
-        "Cursor",
-        "NormalFloat",
-        "Pmenu",
-        "SnippetTabStop",
-
-        "DiagnosticVirtualTextError",
-        "DiagnosticVirtualTextWarn",
-        "DiagnosticVirtualTextHint",
-        "DiagnosticVirtualTextInfo",
-      },
-      exclude_groups = { "CursorLine", "StatusLine", "StatusLineNC" },
-    },
-  },
-  {
     "FylerOrg/fyler.nvim",
+    commit = "8fe34a3",
     opts = {
       kind = "floating",
       integrations = { icon = "nvim_web_devicons" },
@@ -40,21 +14,6 @@ return {
     },
   },
   {
-    "romgrk/barbar.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = "BufEnter",
-    commit = "337ecfa",
-    opts = {
-      animation = false,
-      clickable = false,
-      icons = {
-        buffer_index = true,
-        button = "",
-        separator_at_end = false,
-      },
-    },
-  },
-  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
@@ -63,17 +22,24 @@ return {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      local utils = require("utils")
       local opts = {
-        line_num = { enable = true },
-        indent = { enable = true },
+        line_num = {
+          enable = true,
+          style = { utils.hl_group_color("IndentGuide") },
+        },
+        indent = {
+          enable = true,
+          style = { utils.hl_group_color("IndentGuide") },
+        },
         chunk = {
           enable = true,
           duration = 0,
           delay = 0,
+          style = { utils.hl_group_color("IndentChunk") },
         },
       }
 
-      require("ui").desired_colorscheme().hlchunk_config(opts)
       require("hlchunk").setup(opts)
     end
   },
@@ -117,22 +83,6 @@ return {
     "barrett-ruth/live-server.nvim",
     build = "npm install -g live-server",
     cmd = { "LiveServerToggle" },
-    init = function()
-      vim.g.is_live_server_active = false
-    end,
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      preset = "helix",
-      spec = require("mappings").spec,
-      delay = 300,
-      icons = {
-        group = "",
-        rules = false,
-      },
-    },
   },
   {
     "saghen/blink.cmp",
@@ -230,7 +180,12 @@ return {
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    opts = { enable_autocmd = false },
+    opts = {
+      enable_autocmd = false,
+      languages = {
+        c = "// %s",
+      },
+    },
   },
   {
     "folke/lazydev.nvim",
@@ -241,12 +196,6 @@ return {
         { path = "snacks.nvim",        words = { "Snacks" } },
       },
     },
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "BufEnter",
-    version = "2.1.0",
-    config = true,
   },
   {
     "ojroques/nvim-bufdel",

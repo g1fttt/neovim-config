@@ -46,7 +46,7 @@ local servers_settings = {
     name = "clangd",
     opts = {
       cmd = { "clangd", "--background-index", "--clang-tidy" },
-      filetypes = { "c", "cpp", "cxx" },
+      filetypes = { "c", "cpp" },
     },
   },
   {

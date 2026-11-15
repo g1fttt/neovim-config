@@ -24,7 +24,7 @@ local function create_editor_autocmds(autocmds)
   end
 end
 
-local function handle_lazy_plugin_manager(plugins_specs)
+local function handle_lazy_plugin_manager()
   local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
   if not vim.uv.fs_stat(lazy_path) then
@@ -41,12 +41,8 @@ local function handle_lazy_plugin_manager(plugins_specs)
 
   vim.opt.rtp:prepend(lazy_path)
 
-  local specs = vim.iter(plugins_specs)
-      :map(function(plugin_spec) return { import = plugin_spec } end)
-      :totable()
-
   require("lazy").setup({
-    spec = specs,
+    spec = { { import = "plugins" } },
     install = { colorscheme = { vim.g.colors_name } },
     ui = { border = vim.o.winborder },
   })
@@ -68,9 +64,6 @@ create_editor_autocmds(require("autocmds"))
 
 require("lsp").init()
 
-handle_lazy_plugin_manager({
-  "plugins",
-  "ui.plugins"
-})
+handle_lazy_plugin_manager()
 
 set_misc_options()
