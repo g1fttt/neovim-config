@@ -5,7 +5,7 @@ function M.apply(opts)
   local base = require("seoulbones")
 
   local is_dark = vim.o.background == "dark"
-  local factor = 50
+  local factor = is_dark and 50 or 5
 
   ---@diagnostic disable: undefined-global
   local spec = lush.extends({ base }).with(function()
