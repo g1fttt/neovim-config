@@ -107,7 +107,14 @@ M.spec = {
     },
     { "[b",        "<CMD>BufferPrevious<CR>", desc = "Go to previous buffer" },
     { "]b",        "<CMD>BufferNext<CR>",     desc = "Go to next buffer" },
-    { "<leader>w", "<CMD>BufDel<CR>",         desc = "Close current buffer" },
+    { "<leader>w", "<CMD>BufferClose<CR>",    desc = "Close current buffer" },
+
+    vim.tbl_map(
+      function(i)
+        return { "<M-" .. i .. ">", "<CMD>BufferGoto " .. i .. "<CR>" }
+      end,
+      { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+    ),
   },
 
   {
