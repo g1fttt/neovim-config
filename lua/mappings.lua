@@ -41,6 +41,19 @@ function M.blink_cmp()
   }
 end
 
+function M.for_pros()
+  if not vim.g.i_am_pro then
+    return
+  end
+
+  require("which-key").add({
+    { "<Left>",  "<NOP>" },
+    { "<Right>", "<NOP>" },
+    { "<Down>",  "<NOP>" },
+    { "<Up>",    "<NOP>" },
+  })
+end
+
 M.spec = {
   { "<leader>",  "<Nop>",           silent = true },
 

@@ -31,6 +31,7 @@ return {
       },
       dap = {},
     },
+    i_am_pro = true,
   },
   extras = {
     transparency = false,

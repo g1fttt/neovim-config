@@ -36,6 +36,14 @@ return {
     },
   },
   {
+    event = "VimEnter",
+    opts = {
+      callback = function()
+        require("mappings").for_pros()
+      end,
+    },
+  },
+  {
     event = "User",
     opts = {
       -- https://github.com/LazyVim/LazyVim/discussions/3901
