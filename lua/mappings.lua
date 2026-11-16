@@ -47,6 +47,7 @@ function M.for_pros()
   end
 
   require("which-key").add({
+    mode = { "v", "n" },
     { "<Left>",  "<NOP>" },
     { "<Right>", "<NOP>" },
     { "<Down>",  "<NOP>" },
@@ -65,6 +66,13 @@ M.spec = {
     desc = "Comment block"
   },
   { "<Esc>",     "<CMD>nohlsearch<CR>",                   silent = true },
+
+  {
+    { "<",     "<gv",                 mode = "v" },
+    { ">",     ">gv",                 mode = "v" },
+    { "<A-k>", ":move '<-2<CR>gv=gv", desc = "Move selection up",   mode = "v" },
+    { "<A-j>", ":move '>+1<CR>gv=gv", desc = "Move selection down", mode = "v" },
+  },
 
   { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
   {
