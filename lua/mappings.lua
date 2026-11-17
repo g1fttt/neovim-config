@@ -68,10 +68,13 @@ M.spec = {
   { "<Esc>",     "<CMD>nohlsearch<CR>",                   silent = true },
 
   {
-    { "<",     "<gv",                 mode = "v" },
-    { ">",     ">gv",                 mode = "v" },
-    { "<A-k>", ":move '<-2<CR>gv=gv", desc = "Move selection up",   mode = "v" },
-    { "<A-j>", ":move '>+1<CR>gv=gv", desc = "Move selection down", mode = "v" },
+    mode = "v",
+    { "<",        "<gv", },
+    { ">",        ">gv", },
+    { "<A-k>",    ":move '<-2<CR>gv=gv", desc = "Move selection up", },
+    { "<A-j>",    ":move '>+1<CR>gv=gv", desc = "Move selection down", },
+    { "<A-Up>",   "<A-k>",               remap = true, },
+    { "<A-Down>", "<A-j>",               remap = true, },
   },
 
   { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
