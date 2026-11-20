@@ -8,13 +8,21 @@ function M.on_lsp_attach()
         icon = "󰁥",
         color = "cyan",
       },
-      { "<leader>I",  "<CMD>FzfLua lsp_implementations<CR>",   desc = "Struct/class implementations" },
-      { "<leader>a",  "<CMD>FzfLua lsp_code_actions<CR>",      desc = "Code actions" },
-      { "<leader>k",  vim.lsp.buf.hover,                       desc = "Documentation hover" },
-      { "<leader>d",  vim.diagnostic.open_float,               desc = "Diagnostic hover" },
-      { "<leader>D",  "<CMD>FzfLua diagnostics_workspace<CR>", desc = "Workspace diagnostics" },
-      { "<leader>rn", vim.lsp.buf.rename,                      desc = "Rename symbol" },
-      { "gd",         vim.lsp.buf.definition,                  desc = "Go to definition" },
+      {
+        "<leader>I",
+        function() Snacks.picker.lsp_implementations() end,
+        desc = "Struct/class implementations"
+      },
+      { "<leader>a", vim.lsp.buf.code_action,   desc = "Code actions" },
+      { "<leader>k", vim.lsp.buf.hover,         desc = "Documentation hover" },
+      { "<leader>d", vim.diagnostic.open_float, desc = "Diagnostic hover" },
+      {
+        "<leader>D",
+        function() Snacks.picker.diagnostics() end,
+        desc = "Workspace diagnostics",
+      },
+      { "<leader>rn", vim.lsp.buf.rename,     desc = "Rename symbol" },
+      { "gd",         vim.lsp.buf.definition, desc = "Go to definition" },
     },
   })
 end
@@ -105,22 +113,7 @@ M.spec = {
     "<leader>s",
     function() require("ui.search").open("grep") end,
     desc = "Global search",
-  },
-
-  {
-    group = "FzfLua",
-    icon = {
-      icon = "󰍉",
-      color = "purple",
-    },
-    {
-      "<C-p>",
-      function()
-        require("fzf-lua.win").toggle_preview()
-      end,
-      desc = "Toggle file preview",
-      mode = "t",
-    },
+    icon = "󰍉",
   },
 
   {

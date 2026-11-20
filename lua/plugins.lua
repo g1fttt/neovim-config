@@ -70,16 +70,6 @@ return {
     end,
   },
   {
-    "ibhagwan/fzf-lua",
-    config = function()
-      local fzf = require("fzf-lua")
-      fzf.register_ui_select()
-      fzf.setup({
-        files = { follow = true },
-      })
-    end
-  },
-  {
     "barrett-ruth/live-server.nvim",
     build = "npm install -g live-server",
     cmd = { "LiveServerToggle" },
@@ -140,8 +130,10 @@ return {
   {
     "folke/snacks.nvim",
     version = "2.31.0",
+    priority = 1000,
     opts = {
       lazygit = { enabled = true },
+      picker = { ui_select = true },
     },
   },
   {
