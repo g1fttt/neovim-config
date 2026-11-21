@@ -54,26 +54,14 @@ function M.for_pros()
     return
   end
 
-  require("which-key").add({
-    mode = { "v", "n" },
-    { "<Left>",  "<NOP>" },
-    { "<Right>", "<NOP>" },
-    { "<Down>",  "<NOP>" },
-    { "<Up>",    "<NOP>" },
-  })
+  for _, key in pairs({ "<Left>", "<Right>", "<Down>", "<Up>" }) do
+    Snacks.keymap.set({ "n", "v" }, key, "<NOP>")
+  end
 end
 
 M.spec = {
-  { "<leader>",  "<Nop>",           silent = true },
-
-  { "<leader>/", ":normal gcc<CR>", desc = "Comment line" },
-  {
-    "<leader>/",
-    "<Esc>:normal gvgc<CR>",
-    mode = "v",
-    desc = "Comment block"
-  },
-  { "<Esc>",     "<CMD>nohlsearch<CR>",                   silent = true },
+  { "<leader>", "<Nop>",               silent = true },
+  { "<Esc>",    "<CMD>nohlsearch<CR>", silent = true },
 
   {
     mode = "v",
@@ -85,35 +73,72 @@ M.spec = {
     { "<A-Down>", "<A-j>",               remap = true, },
   },
 
-  { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
   {
     "<leader>o",
     function() require("fyler").toggle() end,
-    desc = "Toggle buffer-like file tree"
+    desc = "Toggle buffer-like file tree",
+    icon = {
+      icon = "󰐅",
+      color = "green",
+    },
   },
   {
-    "<leader>tl",
-    function()
-      local current_dir = vim.fn.expand("%:p:h")
-
-      require("live-server").toggle(current_dir)
-    end,
-    desc = "Toggle live server",
-  },
-  { "<leader>tm", "<CMD>RenderMarkdown toggle<CR>", desc = "Toggle markdown render" },
-  {
-    "<leader>lg",
-    function() Snacks.lazygit.open() end,
-    desc = "Open LazyGit",
-  },
-  {
-    "<leader>gw", "<CMD>HopWord<CR>", desc = "Go (hop) to a word",
+    "<leader>gw",
+    "<CMD>HopWord<CR>",
+    desc = "Go (hop) to a word",
+    icon = "󱋿",
   },
   {
     "<leader>s",
     function() require("ui.search").open("grep") end,
     desc = "Global search",
     icon = "󰍉",
+  },
+
+  {
+    icon = "",
+    { "<leader>/", ":normal gcc<CR>", desc = "Comment line" },
+    {
+      "<leader>/",
+      "<Esc>:normal gvgc<CR>",
+      mode = "v",
+      desc = "Comment block"
+    },
+  },
+
+  {
+    icon = {
+      icon = "",
+      color = "orange",
+    },
+    {
+      "<leader>tl",
+      function()
+        local current_dir = vim.fn.expand("%:p:h")
+
+        require("live-server").toggle(current_dir)
+      end,
+      desc = "Toggle live server",
+    },
+    { "<leader>tm", "<CMD>RenderMarkdown toggle<CR>", desc = "Toggle markdown render" },
+  },
+
+  {
+    icon = {
+      icon = "󰊢",
+      color = "red",
+    },
+    {
+      "<leader>lg",
+      function() Snacks.lazygit.open() end,
+      desc = "Open LazyGit",
+    },
+    {
+      "<leader>ll",
+      function() Snacks.lazygit.log_file() end,
+      desc = "Open current file log in LazyGit",
+    },
+    { "<leader>h", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview git hunk inline" },
   },
 
   {
@@ -140,7 +165,7 @@ M.spec = {
       icon = "󰖯",
       color = "red",
     },
-    { "<M-w>", "<C-w>", noremap = true, desc = "Windows managing" },
+    { "<M-w>", "<C-w>", noremap = true },
   },
 }
 

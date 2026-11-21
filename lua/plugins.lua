@@ -131,9 +131,20 @@ return {
     "folke/snacks.nvim",
     version = "2.31.0",
     priority = 1000,
+    lazy = false,
     opts = {
       lazygit = { enabled = true },
       picker = { ui_select = true },
+      input = { enabled = true },
+      styles = {
+        input = {
+          backdrop = true,
+          relative = "cursor",
+          row = -3,
+          col = 0,
+          width = 40,
+        },
+      },
     },
   },
   {
