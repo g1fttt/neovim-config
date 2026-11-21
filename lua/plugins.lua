@@ -11,6 +11,11 @@ return {
           always_hidden = { "node_modules" },
         },
       },
+      hooks = {
+        on_rename = function(src_path, dest_path)
+          Snacks.rename.on_rename_file(src_path, dest_path)
+        end,
+      },
     },
   },
   {
