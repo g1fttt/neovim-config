@@ -50,7 +50,7 @@ function M.blink_cmp()
 end
 
 function M.for_pros()
-  if not vim.g.i_am_pro then
+  if not vim.extras.i_am_pro then
     return
   end
 
