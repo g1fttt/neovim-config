@@ -3,7 +3,6 @@
   "blink.cmp": { "branch": "main", "commit": "86cfb6bd5edc45fad37b118d67f63ee1808b816a" },
   "blink.lib": { "branch": "main", "commit": "fd9a48ebbe6ec30d5dfcc5b42c243941ccdca1aa" },
   "conform.nvim": { "branch": "master", "commit": "dca1a190aa85f9065979ef35802fb77131911106" },
-  "dashboard-nvim": { "branch": "master", "commit": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe" },
   "deadcolumn.nvim": { "branch": "master", "commit": "9cda5755c0fe4006ba000b1778bb282aede3fd40" },
   "fidget.nvim": { "branch": "main", "commit": "e1a07a5e46fb65a45a0c76870140bd2d16a73ebf" },
   "fyler.nvim": { "branch": "main", "commit": "8fe34a34fdd307ee762a2099be90b259fce39d21" },

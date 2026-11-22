@@ -50,7 +50,7 @@ function M.blink_cmp()
 end
 
 function M.for_pros()
-  if not vim.extras.i_am_pro then
+  if not require("options").extras.i_am_pro then
     return
   end
 
@@ -147,9 +147,17 @@ M.spec = {
       icon = "",
       color = "green",
     },
-    { "[b",        "<CMD>BufferPrevious<CR>", desc = "Go to previous buffer" },
-    { "]b",        "<CMD>BufferNext<CR>",     desc = "Go to next buffer" },
-    { "<leader>w", "<CMD>BufferClose<CR>",    desc = "Close current buffer" },
+    { "[b", "<CMD>BufferPrevious<CR>", desc = "Go to previous buffer" },
+    { "]b", "<CMD>BufferNext<CR>",     desc = "Go to next buffer" },
+    {
+      "<leader>w",
+      function()
+        if vim.bo.filetype ~= "snacks_dashboard" then
+          vim.cmd("BufferClose")
+        end
+      end,
+      desc = "Close current buffer"
+    },
 
     vim.tbl_map(
       function(i)

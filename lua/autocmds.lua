@@ -58,7 +58,9 @@ return {
             and deleted_buf_bt == ""
 
         if is_last_buf_closed then
-          vim.cmd("Dashboard")
+          vim.schedule(function()
+            Snacks.dashboard.open({ win = 0 })
+          end)
         end
       end,
     },
